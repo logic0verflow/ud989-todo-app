@@ -180,7 +180,12 @@ label[for='toggle-all'] {
 	list-style: none;
 }
 
-#todo-list li {
+#header div.view {
+    margin-top: 2px;
+}
+
+#todo-list li,
+#header div.view {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px dotted #ccc;
@@ -223,7 +228,8 @@ label[for='toggle-all'] {
 	appearance: none;
 }
 
-#todo-list li .priority-btn {
+#todo-list li .priority-btn,
+#header div.view .priority-btn {
 	display: none;
 	height: auto;
 	position: absolute;
@@ -242,11 +248,13 @@ label[for='toggle-all'] {
 	appearance: none;
 }
 
-#todo-list li:hover .priority-btn {
+#todo-list li:hover .priority-btn,
+#header div.view:hover .priority-btn {
 	display: block;
 }
 
-#todo-list li .priority-btn:after {
+#todo-list li .priority-btn:after,
+#header div.view .priority-btn:after {
 	content: '!';
 }
 
@@ -286,7 +294,8 @@ label[for='toggle-all'] {
 	color: #d66;
 }
 
-#todo-list li.priority .priority-btn:after {
+#todo-list li.priority .priority-btn:after,
+#header div.priority {
 	color: #d66;
 }
 
@@ -441,8 +450,8 @@ label[for='toggle-all'] {
 	#toggle-all {
 		top: -56px;
 		left: -15px;
-		width: 65px;
-		height: 41px;
+		width: 64px;
+		height: 32px;
 		-webkit-transform: rotate(90deg);
 		transform: rotate(90deg);
 		-webkit-appearance: none;

@@ -19,6 +19,7 @@ var app = app || {};
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
+			'click #new-todo-priority': 'newTodoPriority',
 			'keypress #new-todo': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
 			'click #toggle-all': 'toggleAllComplete'
@@ -33,6 +34,7 @@ var app = app || {};
 			this.$footer = this.$('#footer');
 			this.$main = this.$('#main');
 			this.$list = $('#todo-list');
+            this.$newTodoView = $('#header').find('.view');
 
 			this.listenTo(app.todos, 'add', this.addOne);
 			this.listenTo(app.todos, 'reset', this.addAll);
@@ -94,12 +96,17 @@ var app = app || {};
 			app.todos.each(this.filterOne, this);
 		},
 
+        newTodoPriority: function () {
+            this.$newTodoView.toggleClass('priority');
+        },
+
 		// Generate the attributes for a new Todo item.
 		newAttributes: function () {
 			return {
 				title: this.$input.val().trim(),
 				order: app.todos.nextOrder(),
-				completed: false
+				completed: false,
+                priority: this.$newTodoView.hasClass('priority')
 			};
 		},
 
@@ -109,6 +116,7 @@ var app = app || {};
 			if (e.which === ENTER_KEY && this.$input.val().trim()) {
 				app.todos.create(this.newAttributes());
 				this.$input.val('');
+                this.newTodoPriority();
 			}
 		},
 
