@@ -116,7 +116,7 @@ var app = app || {};
 			if (e.which === ENTER_KEY && this.$input.val().trim()) {
 				app.todos.create(this.newAttributes());
 				this.$input.val('');
-                this.newTodoPriority();
+                this.$newTodoView.toggleClass('priority', false);
 			}
 		},
 
